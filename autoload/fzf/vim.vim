@@ -703,8 +703,7 @@ function! fzf#vim#grep_interactive(command, with_column, ...)
   \ 'column':  a:with_column,
   \ 'options': ['-i', '-c', a:command,
   \             '--ansi', '--cmd-prompt', capname.'> ',
-  \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all',
-  \             '--color', 'hl:68,hl+:110']
+  \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all']
   \}
   function! opts.sink(lines)
     return s:ag_handler(a:lines, self.column)
@@ -749,8 +748,7 @@ function! fzf#vim#grep(grep_command, with_column, ...)
   \ 'source':  a:grep_command,
   \ 'column':  a:with_column,
   \ 'options': ['--ansi', '--prompt', capname.'> ',
-  \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all',
-  \             '--color', 'hl:4,hl+:12']
+  \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all']
   \}
   function! opts.sink(lines)
     return s:ag_handler(a:lines, self.column)
@@ -1247,7 +1245,7 @@ function! fzf#vim#maps(mode, ...)
   return s:fzf('maps', {
   \ 'source':  colored,
   \ 'sink':    s:function('s:key_sink'),
-  \ 'options': '--prompt "Maps ('.a:mode.')> " --ansi --no-hscroll --nth 1,.. --color prompt:'.pcolor}, a:000)
+  \ 'options': '--prompt "Maps ('.a:mode.')> " --ansi --no-hscroll --nth 1,..'}, a:000)
 endfunction
 
 " ----------------------------------------------------------------------------
