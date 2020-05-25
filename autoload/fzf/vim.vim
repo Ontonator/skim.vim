@@ -633,7 +633,7 @@ function! fzf#vim#buffers(...)
   return s:fzf('buffers', {
   \ 'source':  map(s:buflisted_sorted(), 's:format_buffer(v:val)'),
   \ 'sink*':   s:function('s:bufopen'),
-  \ 'options': ['-m', '--extended', '--tiebreak=index', '--header-lines=1', '--ansi', '-d', '\t', '-n', '2,1..2', '--prompt', 'Buf> ', '--query', query]
+  \ 'options': ['-m', '--extended', '--tiebreak=score,end', '--header-lines=1', '--ansi', '-d', '\t', '-n', '2,1..2', '--prompt', 'Buf> ', '--query', query]
   \}, args)
 endfunction
 
@@ -1040,7 +1040,7 @@ function! fzf#vim#helptags(...)
   \ 'source':  'grep -H ".*" '.join(map(tags, 'skim#shellescape(v:val)')).
     \ ' | perl -n '.skim#shellescape(s:helptags_script).' | sort',
   \ 'sink':    s:function('s:helptag_sink'),
-  \ 'options': ['--ansi', '-m', '--tiebreak=begin', '--with-nth', '..-2']}, a:000)
+  \ 'options': ['--ansi', '-m', '--tiebreak=score,begin', '--with-nth', '..-2']}, a:000)
 endfunction
 
 " ------------------------------------------------------------------
